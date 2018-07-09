@@ -1,8 +1,6 @@
-# CLOUD CATS
+# NOTE: This readme is out of date. Don't trust it too much.
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/JustinBeckwith/cloudcats.svg)](https://greenkeeper.io/)
-[![CircleCI badge](https://circleci.com/gh/JustinBeckwith/cloudcats/tree/master.svg?style=shield)](https://circleci.com/gh/JustinBeckwith/cloudcats/tree/master)
-[![Known Vulnerabilities](https://snyk.io/test/github/justinbeckwith/cloudcats/badge.svg)](https://snyk.io/test/github/justinbeckwith/cloudcats)
+# CLOUD CATS
 
 CloudCats is an example of using node.js and various Google Cloud APIs and services to solve the greatest question of our time:  do developers prefer dogs or cats.
 

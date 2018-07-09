@@ -9,7 +9,7 @@ const gconf = {
   keyFilename: 'keyfile.json'
 };
 
-const bucketName = 'cloudcats-bucket';
+const bucketName = 'cloudcats';
 const vision = new Vision.ImageAnnotatorClient(gconf);
 const storage = new Storage(gconf);
 const bucket = storage.bucket(bucketName);

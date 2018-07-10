@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcats-worker
+spec:
+  ports:
+  - port: 8081
+  selector:
+    app: cloudcats
+    tier: worker
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudcats-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cloudcats
+      tier: worker
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: cloudcats
+        tier: worker
+    spec:
+      containers:
+      - name: cloudcats-worker
+        image: gcr.io/gcp-early-access-sandbox/ccworker
+        volumeMounts:
+        - name: gcp
+          mountPath: /var/secrets
+      volumes:
+      - name: gcp
+        secret:
+          secretName: cloudcats

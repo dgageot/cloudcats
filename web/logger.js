@@ -7,7 +7,7 @@ var logger = new (winston.Logger)({
       handleExceptions: true
     }),
     new LoggingWinston({
-      keyFilename: 'keyfile.json',
+      keyFilename: '/var/secrets/keyfile.json',
       logName: 'cloudcats-web'
     })
   ]

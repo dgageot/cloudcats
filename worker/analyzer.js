@@ -6,7 +6,7 @@ const util = require('util');
 const async = require('async');
 const logger = require('./logger');
 const bigquery = require('@google-cloud/bigquery')({
-  keyFilename: 'keyfile.json'
+  keyFilename: '/var/secrets/keyfile.json'
 });
 const dataset = bigquery.dataset('cloudcats');
 const table = dataset.table('images');

@@ -1,13 +1,13 @@
 'use strict';
 
 require('@google-cloud/trace-agent').start({
-  keyFilename: './keyfile.json',
+  keyFilename: '/var/secrets/keyfile.json',
   projectId: 'gcp-early-access-sandbox'
 });
 
 require('@google-cloud/debug-agent').start({
   allowExpressions: true,
-  keyFilename: './keyfile.json',
+  keyFilename: '/var/secrets/keyfile.json',
   projectId: 'gcp-early-access-sandbox'
 });
 

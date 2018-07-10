@@ -6,7 +6,7 @@ const Vision = require('@google-cloud/vision');
 const Storage = require('@google-cloud/storage');
 
 const gconf = {
-  keyFilename: 'keyfile.json'
+  keyFilename: '/var/secrets/keyfile.json'
 };
 
 const bucketName = 'cloudcats';

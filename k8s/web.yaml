@@ -1,0 +1,57 @@
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: cloudcats-ingress
+#   annotations:
+#     kubernetes.io/ingress.global-static-ip-name: cloudcats-static-ip
+# spec:
+#   backend:
+#     serviceName: cloudcats-web
+#     servicePort: 80
+# ---    
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcats-web
+spec:
+  type: LoadBalancer
+  # loadBalancerIP: 104.154.132.78
+  # sessionAffinity: ClientIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: cloudcats
+    tier: web
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudcats-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cloudcats
+      tier: web
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: cloudcats
+        tier: web
+    spec:
+      containers:
+      - name: cloudcats-web
+        image: gcr.io/gcp-early-access-sandbox/ccweb
+        volumeMounts:
+        - name: gcp
+          mountPath: /var/secrets
+      volumes:
+      - name: gcp
+        secret:
+          secretName: cloudcats
